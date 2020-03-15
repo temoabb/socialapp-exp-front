@@ -26,11 +26,11 @@ const StyledImg = styled.img`
   left: 10px;
 `
 
-const Input = ({ text, imgsrc }) => {
+const Input = ({ text, imgsrc, type, onchange }) => {
   return (
     <StyledDiv>
       <StyledImg src={imgsrc} />
-      <StyledInput placeholder={text} />
+      <StyledInput onChange={onchange} placeholder={text} type={type} />
     </StyledDiv>
 
   )

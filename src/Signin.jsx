@@ -39,7 +39,7 @@ const Signin = () => {
         <StyledImg src="https://library.kissclipart.com/20180918/pvw/kissclipart-linkedin-icoon-png-clipart-linkedin-computer-icons-5982e4eda47e2385.png" />
       </div>
       <h5 style={color}>use your email for registration</h5>
-      <Input text="Name" imgsrc="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/User_font_awesome.svg/1200px-User_font_awesome.svg.png" />
+      {/* <Input text="Name" imgsrc="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/User_font_awesome.svg/1200px-User_font_awesome.svg.png" /> */}
       <Input text="Email" imgsrc={mailIcon} />
       <Input text="Password" imgsrc="https://cdn.onlinewebfonts.com/svg/img_189270.png" />
       <Button description="Sign in" />

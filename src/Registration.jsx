@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-
 import Input from './Input.jsx'
 import Button from './Button.jsx'
+import axios from 'axios'
+
 
 
 const StyledDiv = styled.div`
@@ -16,7 +17,6 @@ const StyledDiv = styled.div`
   width: 500px;
   height: 400px;
   margin-top: 50px;
-
 `
 const StyledImg = styled.img`
   width: 30px;
@@ -35,6 +35,34 @@ const spanStyle = {
 }
 
 const Registration = () => {
+
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+
+  const handleEmail = (event) => {
+    setEmail(event.target.value)
+  }
+
+  const handlePassword = (event) => {
+    setPassword(event.target.value)
+  }
+
+  const data = async () => {
+    try {
+      const res = await axios({
+        method: 'post',
+        url: 'http://localhost:8080/api/sign-up',
+        data: {
+          email: email,
+          password: password
+        }
+      })
+      console.log('res', res)
+
+    } catch (error) {
+      console.log('error', error)
+    }
+  }
   return (
     <StyledDiv>
       <h1 style={color}>Create account</h1>
@@ -44,13 +72,13 @@ const Registration = () => {
         <StyledImg src="https://library.kissclipart.com/20180918/pvw/kissclipart-linkedin-icoon-png-clipart-linkedin-computer-icons-5982e4eda47e2385.png" />
       </div>
       <h5 style={color}>use your email for registration</h5>
-      <Input text="Name" imgsrc="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/User_font_awesome.svg/1200px-User_font_awesome.svg.png" />
-      <Input text="Email" imgsrc="https://i.ya-webdesign.com/images/embed-a-png-in-gmail-2.png" />
-      <Input text="Password" imgsrc="https://cdn.onlinewebfonts.com/svg/img_189270.png" />
+      {/* <Input text="Name" imgsrc="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/User_font_awesome.svg/1200px-User_font_awesome.svg.png" /> */}
+      <Input type="text" onchange={handleEmail} text="Email" imgsrc="https://i.ya-webdesign.com/images/embed-a-png-in-gmail-2.png" />
+      <Input type="password" onchange={handlePassword} text="Password" imgsrc="https://cdn.onlinewebfonts.com/svg/img_189270.png" />
       <div>
-        <Button description="Sign up" />
+        <Button onclick={data} description="Sign up" />
         <span style={spanStyle}>or</span>
-        <Link to="/signin"><Button description="Sign in" /></Link>
+        <Link to="/signin"><Button description="Sign in" onclick={data} /></Link>
       </div>
     </StyledDiv>
   )

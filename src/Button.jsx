@@ -18,8 +18,8 @@ const StyledButton = styled.button`
   }
 `
 
-const Button = ({ description }) => (
-  <StyledButton>{description}</StyledButton>
+const Button = ({ description, onclick }) => (
+  <StyledButton onClick={onclick}>{description}</StyledButton>
 )
 
 
