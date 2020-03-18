@@ -10,13 +10,14 @@ import axios from 'axios'
 const StyledDiv = styled.div`
   display: flex;
   flex-direction: column;
+  margin-left: calc(50% - 300px);
   align-items: center;
   justify-content: space-evenly;
-  border: 2px solid skyblue;
+  border: 5px solid #83677B;
   border-radius: 5px;
   width: 500px;
   height: 400px;
-  margin-top: 50px;
+  margin-top: 30px;
 `
 const StyledImg = styled.img`
   width: 30px;
@@ -35,7 +36,6 @@ const spanStyle = {
 }
 
 const Registration = () => {
-
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
@@ -57,12 +57,13 @@ const Registration = () => {
           password: password
         }
       })
+      localStorage.setItem("accessToken", res.data.data)
       console.log('res', res)
-
     } catch (error) {
       console.log('error', error)
     }
   }
+
   return (
     <StyledDiv>
       <h1 style={color}>Create account</h1>

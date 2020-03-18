@@ -6,44 +6,60 @@ import Button from '../src/Button.jsx'
 
 const StyledDiv = styled.div`
   display: flex;
-  margin-top: 60px;
+  margin-left: calc(50% - 200px);
   flex-direction: column;
-  border: 1px solid skyblue;
   border-radius: 3px;
   justify-content: space-evenly;
   width: 400px;
-  height: 400px;
+  height: 200px;
   align-items: center;
+  
 `
-const StyledSections = styled.div`
+
+const StyledDescription = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-`
-const color = {
-  color: "skyblue"
-}
-
-const StyledImg = styled.img`
-  width: 70px;
-  height: 70px;
+  justify-content: space-around;
+  height: 300px;
 `
 
+const StyledBtn = styled.button`
+  width: 155px;
+  height: 50px;
+  border: none;
+  background: #738189;
+  font-size: 20px;
+  border-radius: 3px;
+  color: whitesmoke;
+  font-weight: bold;
+  cursor: pointer;
+  :hover {
+    color: lightgray;
+    background: darkgreen; 
+    border: none;
+    transition: 400ms;
+  }
+`
 
 const Home = () => {
   return (
-    <StyledDiv>
-      <h1 style={color}>Welcome to Diprella! </h1>
-      <StyledImg src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/1024px-Telegram_logo.svg.png" alt="gfgf" />
-      <StyledSections>
-        <h5 style={color}>Create Account:</h5>
-        <Link to="/signup"><Button description="Sign up" /></Link>
-      </StyledSections>
-      <StyledSections>
-        <h5 style={color}>Already have an account?</h5>
-        <Link to="/signin"><Button description="Sign in" /></Link>
-      </StyledSections>
-    </StyledDiv>
+    <div>
+      <StyledDescription>
+        <h1 style={{ color: "lightgrey", fontSize: "40px", maxWidth: "730px", textAlign: "center" }}>Teachers are the innovators education has been waiting for.</h1>
+        <p style={{ color: "lightgrey", fontSize: "18px" }}>Preparing our students to be the problem solvers of tomorrow</p>
+        <Link to="/signup"><StyledBtn>Join us</StyledBtn></Link>
+      </StyledDescription>
+      <StyledDiv>
+        <h5 style={{ color: "#738189", fontSize: "20px" }}>Create account or sign in:</h5>
+        <div>
+          <Link to="/signup"><Button description="Sign up" /></Link>
+          <Link to="/signin"><Button description="Sign in" /></Link>
+        </div>
+
+      </StyledDiv>
+
+    </div >
   )
 }
 

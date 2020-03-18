@@ -3,18 +3,20 @@ import styled from 'styled-components'
 
 
 const StyledButton = styled.button`
-  width: 90px;
-  height: 30px;
-  border-radius: 5px;
-  outline: none;
-  margin: 3px;
+ width: 120px;
+  height: 40px;
   border: none;
-  color: skyblue;
+  margin: 4px;
+  background: #738189;
+  font-size: 16px;
+  border-radius: 5px;
+  color: white;
   cursor: pointer;
+  font-weight: bold;
   :hover {
-    background: skyblue;
-    transition: 500ms;
-    color: white;
+    color: #83677B;
+    background: lightgrey;
+    transition: 400ms;
   }
 `
 

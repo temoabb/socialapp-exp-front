@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import Input from './Input.jsx'
 import Button from './Button.jsx'
+import axios from 'axios'
 
 
 const StyledDiv = styled.div`
@@ -9,6 +10,7 @@ const StyledDiv = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+  margin-left: calc(50% - 300px);
   border: 2px solid grey;
   border-radius: 5px;
   width: 500px;
@@ -27,10 +29,40 @@ const color = {
 }
 
 const mailIcon = "https://i.ya-webdesign.com/images/embed-a-png-in-gmail-2.png"
+const welcomeBackSrc = "https://pluspng.com/img-png/png-welcome-back--400.png"
 
 
 const Signin = () => {
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+
+  const handleEmail = (event) => {
+    setEmail(event.target.value)
+  }
+
+  const handlePassword = (event) => {
+    setPassword(event.target.value)
+  }
+
+  const signin = async () => {
+    try {
+      const res = await axios({
+        method: 'post',
+        url: 'http://localhost:8080/api/sign-in',
+        data: {
+          email: email,
+          password: password
+        }
+      })
+      localStorage.setItem("accessToken", res.data.data)
+      console.log('res', res)
+    } catch (error) {
+      console.log('error', error)
+    }
+  }
+
   return (
+
     <StyledDiv>
       <h1 style={color}>Sign in</h1>
       <div>
@@ -40,10 +72,11 @@ const Signin = () => {
       </div>
       <h5 style={color}>use your email for registration</h5>
       {/* <Input text="Name" imgsrc="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/User_font_awesome.svg/1200px-User_font_awesome.svg.png" /> */}
-      <Input text="Email" imgsrc={mailIcon} />
-      <Input text="Password" imgsrc="https://cdn.onlinewebfonts.com/svg/img_189270.png" />
-      <Button description="Sign in" />
+      <Input onchange={handleEmail} text="Email" imgsrc={mailIcon} />
+      <Input onchange={handlePassword} text="Password" imgsrc="https://cdn.onlinewebfonts.com/svg/img_189270.png" />
+      <Button onclick={signin} description="Sign in" />
     </StyledDiv>
+
   )
 }
 
